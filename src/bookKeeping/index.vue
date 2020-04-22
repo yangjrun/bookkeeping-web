@@ -82,25 +82,25 @@ export default {
     init: function() {
       var _this = this;
       this.axios
-        .get("http://localhost:9999/service/bookKeeping")
+        .get("/service/bookKeeping")
         .then(response => {
           _this.tableData = response.data;
         });
 
       this.axios
-        .get("http://localhost:9999/service/paymentType")
+        .get("/service/paymentType")
         .then(response => {
           _this.paymentTypeList = response.data;
         });
 
       this.axios
-        .get("http://localhost:9999/service/paymentChannel")
+        .get("/service/paymentChannel")
         .then(response => {
           _this.paymentChannelList = response.data;
         });
 
       this.axios
-        .get("http://localhost:9999/service/paymentUse")
+        .get("/service/paymentUse")
         .then(response => {
           _this.paymentUseList = response.data;
         });
@@ -108,11 +108,11 @@ export default {
     submitData: function() {
       var _this = this;
       this.axios
-        .post("http://localhost:9999/service/bookKeeping", _this.form)
+        .post("/service/bookKeeping", _this.form)
         .then(response => {
           _this.dialogFormVisible = false;
           this.axios
-            .get("http://localhost:9999/service/bookKeeping")
+            .get("/service/bookKeeping")
             .then(response => {
               _this.tableData = response.data;
             });

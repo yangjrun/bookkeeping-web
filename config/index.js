@@ -9,9 +9,17 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
-    proxyTable: {},
-
+    assetsPublicPath: '/',
+    // proxyTable: {},
+    proxyTable: {
+      "/service": {
+        target: "http://yangjrun.com:40000/service", //设置调用的接口域名和端口
+        changeOrigin: true,
+        pathRewrite: {
+          "^/service": "" //用'/service' 代替 'http://127.0.0.1:40000/service'
+        }
+      }
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 40001, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
@@ -20,7 +28,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
