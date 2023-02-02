@@ -1,4 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+import { createRuntimeConfig, createViteConfig } from './build'
 
+export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/tailwindcss', '@pinia/nuxt', '@vueuse/nuxt', 'nuxt-lodash', '@pinia-plugin-persistedstate/nuxt',
+  ],
+  css: ['assets/css/index.css', '@arco-design/web-vue/dist/arco.css'],
+  plugins: ["@/plugins/arco-design"],
+  runtimeConfig: createRuntimeConfig(),
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    keepalive: true,
+  },
+  typescript: {
+    shim: false,
+  },
+  experimental: {
+    reactivityTransform: true,
+  },
+  vite: createViteConfig(),
 })
